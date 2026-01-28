@@ -102,16 +102,63 @@ ul { list-style: none; }
 }
 
 .sidebar h2 { margin-bottom: 2rem; text-align: center; }
-.sidebar nav a {
-    display: block;
-    padding: 0.8rem;
-    color: #cbd5e1;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
+
+/* --- NAVIGATION / SIDEBAR --- */
+
+/* On cible la liste à l'intérieur de la sidebar */
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
 }
-.sidebar nav a:hover, .sidebar nav a.active {
-    background-color: var(--primary-color);
+
+/* On cible les liens (a) directement dans la sidebar */
+/* AVANT C'ÉTAIT : .sidebar nav a (FAUX) */
+/* MAINTENANT C'EST : .sidebar a (VRAI) */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    
+    /* Style "Boite" */
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+    
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Effet au survol */
+.sidebar a:hover {
+    background-color: #334155;
+    border-color: #475569;
     color: white;
+    transform: translateX(5px);
+}
+
+/* Le bouton actif */
+.sidebar a.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton Déconnexion spécifique */
+.btn-logout {
+    margin-top: auto; /* Pousse le bouton tout en bas */
+    background-color: rgba(239, 68, 68, 0.1) !important; /* Fond rouge très léger */
+    color: #fca5a5 !important; /* Texte rouge clair */
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+.btn-logout:hover {
+    background-color: #ef4444 !important; /* Devient rouge vif */
+    color: white !important;
 }
 
 /* Contenu Principal */
@@ -126,13 +173,18 @@ ul { list-style: none; }
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    overflow: hidden; /* Pour que les coins ronds marchent sur le tableau */
+    
+    /* MODIFICATION ICI POUR LE MOBILE */
+    overflow-x: auto; /* Ajoute un scroll horizontal si ça dépasse */
+    -webkit-overflow-scrolling: touch; /* Rend le scroll fluide sur iPhone/Android */
 }
 
+/* On force le tableau à garder une taille correcte pour qu'il soit lisible */
 table {
     width: 100%;
-    border-collapse: collapse; /* Enlève les espaces entre les bordures */
+    border-collapse: collapse;
     text-align: left;
+    min-width: 600px; /* <-- AJOUT : Force le tableau à être large (déclenche le scroll sur mobile) */
 }
 
 thead {
@@ -226,4 +278,97 @@ tbody tr:hover {
     color: #64748b;
     margin-bottom: 0.5rem;
     display: block;
+}
+
+/* --- GRILLE DE STATISTIQUES (3 colonnes) --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Sur mobile, on empile tout */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Style pour les gros chiffres */
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin: 0.5rem 0;
+}
+.stat-label {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE MOBILE (Max 768px) --- */
+@media (max-width: 768px) {
+
+    /* 1. On cache le bouton menu par défaut sur PC, mais on l'affiche ici */
+    .menu-btn {
+        display: block; /* Devient visible */
+        position: fixed;
+        top: 15px;
+        right: 15px; /* Je le mets à droite, souvent plus accessible au pouce */
+        z-index: 2000; /* Au-dessus de tout */
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%; /* Bouton rond */
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 8px; /* Petit ajustement pour centrer les points */
+    }
+
+    /* 2. On change la Sidebar pour qu'elle flotte */
+    .sidebar {
+        position: fixed;    /* Elle ne pousse plus le contenu, elle flotte par dessus */
+        top: 0;
+        left: 0;
+        height: 100vh;      /* Toute la hauteur */
+        width: 250px;
+        z-index: 1000;      /* Au dessus du contenu */
+        
+        /* L'ASTUCE : On la déplace à gauche de 100% pour la cacher */
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease-in-out; /* Animation fluide */
+    }
+
+    /* 3. La classe qu'on ajoutera en JS pour montrer le menu */
+    .sidebar.open {
+        transform: translateX(0); /* On la remet à sa place (visible) */
+        box-shadow: 4px 0 15px rgba(0,0,0,0.5); /* Une ombre pour détacher du fond */
+    }
+
+    /* 4. Le contenu principal prend toute la largeur */
+    .main-content {
+        width: 100%;
+        flex: none; /* Annule le flex: 1 */
+        padding-top: 4rem; /* Laisse de la place pour pas que le titre soit sous le bouton */
+    }
+    
+    /* On passe les grilles en une seule colonne */
+    .grid-2-1, .stats-grid, .d-flex.gap-1 {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- VERSION PC (Ecran > 769px) --- */
+@media (min-width: 769px) {
+    .menu-btn {
+        display: none; /* On cache le bouton sur PC */
+    }
 }
