@@ -1,0 +1,104 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --primary-color: #2563eb; /* Bleu pro */
+    --text-dark: #1e293b;
+    --bg-light: #f1f5f9;
+    --sidebar-width: 250px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- UTILITAIRES FLEXBOX --- */
+.d-flex { display: flex; }
+.flex-col { flex-direction: column; }
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+.gap-1 { gap: 1rem; }
+
+/* --- PAGE DE CONNEXION (Login) --- */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+/* --- LAYOUT PRINCIPAL (Dashboard & autres) --- */
+.app-layout {
+    display: flex; /* C'est ICI que se joue la structure Page + Menu */
+    height: 100vh;
+}
+
+/* Barre latérale (Sidebar) */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: #0f172a; /* Bleu très foncé */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.sidebar h2 { margin-bottom: 2rem; text-align: center; }
+.sidebar nav a {
+    display: block;
+    padding: 0.8rem;
+    color: #cbd5e1;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+.sidebar nav a:hover, .sidebar nav a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Contenu Principal */
+.main-content {
+    flex: 1; /* Prend tout l'espace restant */
+    padding: 2rem;
+    overflow-y: auto; /* Permet de scroller si le contenu est long */
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Ticketing App</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <nav class="sidebar">
+            <h2>Ticketing App</h2>
+            <ul>
+                <li><a href="dashboard.html" class="active">📊 Tableau de bord</a></li>
+                <li><a href="projects.html">📁 Projets</a></li>
+                <li><a href="tickets.html">🎫 Tickets</a></li>
+                <li><a href="index.html" style="margin-top: auto; background:#ef4444;">Déconnexion</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header style="margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
+                <h1>Bonjour, Admin 👋</h1>
+                <p>Voici un aperçu de l'activité.</p>
+            </header>
+
+            <section class="d-flex gap-1">
+                <div style="background:white; padding:1.5rem; flex:1; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    <h3>Tickets en cours</h3>
+                    <p style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">12</p>
+                </div>
+                <div style="background:white; padding:1.5rem; flex:1; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    <h3>Tickets à valider</h3>
+                    <p style="font-size: 2rem; font-weight: bold; color: orange;">3</p>
+                </div>
+                <div style="background:white; padding:1.5rem; flex:1; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    <h3>Projets actifs</h3>
+                    <p style="font-size: 2rem; font-weight: bold; color: green;">5</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
