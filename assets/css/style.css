@@ -29,7 +29,7 @@ ul { list-style: none; }
 .justify-center { justify-content: center; }
 .gap-1 { gap: 1rem; }
 
-/* --- PAGE DE CONNEXION (Login) --- */
+/* --- PAGE DE CONNEXION --- */
 .login-container {
     height: 100vh;
     display: flex;
@@ -87,14 +87,14 @@ ul { list-style: none; }
 
 /* --- LAYOUT PRINCIPAL (Dashboard & autres) --- */
 .app-layout {
-    display: flex; /* C'est ICI que se joue la structure Page + Menu */
+    display: flex;
     height: 100vh;
 }
 
 /* Barre latérale (Sidebar) */
 .sidebar {
     width: var(--sidebar-width);
-    background-color: #0f172a; /* Bleu très foncé */
+    background-color: #0f172a;
     color: white;
     display: flex;
     flex-direction: column;
@@ -113,8 +113,6 @@ ul { list-style: none; }
 }
 
 /* On cible les liens (a) directement dans la sidebar */
-/* AVANT C'ÉTAIT : .sidebar nav a (FAUX) */
-/* MAINTENANT C'EST : .sidebar a (VRAI) */
 .sidebar a {
     display: flex;
     align-items: center;
@@ -151,13 +149,13 @@ ul { list-style: none; }
 /* Bouton Déconnexion spécifique */
 .btn-logout {
     margin-top: auto; /* Pousse le bouton tout en bas */
-    background-color: rgba(239, 68, 68, 0.1) !important; /* Fond rouge très léger */
-    color: #fca5a5 !important; /* Texte rouge clair */
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    color: #fca5a5 !important;
     border: 1px solid rgba(239, 68, 68, 0.3) !important;
 }
 
 .btn-logout:hover {
-    background-color: #ef4444 !important; /* Devient rouge vif */
+    background-color: #ef4444 !important;
     color: white !important;
 }
 
@@ -174,7 +172,7 @@ ul { list-style: none; }
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     
-    /* MODIFICATION ICI POUR LE MOBILE */
+    /* MODIFICATION POUR LE MOBILE */
     overflow-x: auto; /* Ajoute un scroll horizontal si ça dépasse */
     -webkit-overflow-scrolling: touch; /* Rend le scroll fluide sur iPhone/Android */
 }
@@ -184,7 +182,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
-    min-width: 600px; /* <-- AJOUT : Force le tableau à être large (déclenche le scroll sur mobile) */
+    min-width: 600px; /* Largeur minimale pour éviter que ça soit trop serré */
 }
 
 thead {
@@ -329,7 +327,6 @@ tbody tr:hover {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-bottom: 8px; /* Petit ajustement pour centrer les points */
     }
 
     /* 2. On change la Sidebar pour qu'elle flotte */
