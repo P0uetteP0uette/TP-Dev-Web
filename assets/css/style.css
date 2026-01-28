@@ -17,6 +17,7 @@ body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     height: 100vh; /* Prend toute la hauteur de l'écran */
+    overflow-x: hidden; /* Interdit le scroll horizontal sur toute la page */
 }
 
 a { text-decoration: none; color: inherit; }
@@ -286,13 +287,6 @@ tbody tr:hover {
     margin-bottom: 2rem;
 }
 
-/* Sur mobile, on empile tout */
-@media (max-width: 768px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Style pour les gros chiffres */
 .stat-value {
     font-size: 2rem;
@@ -360,6 +354,69 @@ tbody tr:hover {
     .grid-2-1, .stats-grid, .d-flex.gap-1 {
         flex-direction: column;
         grid-template-columns: 1fr;
+    }
+
+/* --- TRANSFORMATION TABLEAU EN CARTES (MOBILE) --- */
+    
+    /* 1. On annule le comportement de tableau et on TUE la largeur forcée */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+        min-width: 0 !important; /* <--- C'EST CA QUI REGLE TON PROBLEME */
+    }
+
+    /* 2. On cache l'en-tête */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* 3. Style de la Carte */
+    tr {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* 4. Style des lignes */
+    td {
+        border: none;
+        border-bottom: 1px solid #f1f5f9;
+        position: relative;
+        padding-left: 0 !important;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        
+        /* Sécurité pour que le texte ne dépasse jamais */
+        word-break: break-word; 
+    }
+
+    td:last-child { border-bottom: 0; }
+
+    /* 5. Le Label ajouté par le JS */
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #64748b;
+        text-align: left;
+        padding-right: 1rem;
+        white-space: nowrap; /* Le titre reste sur une ligne */
+        flex-shrink: 0; /* Le titre ne s'écrase pas */
+    }
+    
+    /* Correction du conteneur qui ne doit plus scroller */
+    .table-container {
+        box-shadow: none;
+        background: transparent;
+        overflow: visible; /* Plus de scroll */
     }
 }
 
