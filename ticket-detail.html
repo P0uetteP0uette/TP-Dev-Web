@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail Ticket #1039 - Ticketing App</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <nav class="sidebar">
+            <h2>Ticketing App</h2>
+            <ul>
+                <li><a href="dashboard.html">📊 Tableau de bord</a></li>
+                <li><a href="projects.html">📁 Projets</a></li>
+                <li><a href="tickets.html" class="active">🎫 Tickets</a></li>
+                <li><a href="index.html" style="margin-top: auto; background:#ef4444;">Déconnexion</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            
+            <div style="margin-bottom: 2rem;">
+                <a href="tickets.html" style="color: #64748b; font-size: 0.9rem;">← Retour à la liste</a>
+                <div class="d-flex align-center gap-1" style="margin-top: 0.5rem;">
+                    <h1>#1039 - Ajout module export PDF</h1>
+                    <span class="badge badge-red">Facturable</span>
+                </div>
+            </div>
+
+            <div class="grid-2-1">
+                
+                <section class="col-main">
+                    
+                    <div class="card">
+                        <h3>Description de la demande</h3>
+                        <p style="line-height: 1.6;">
+                            Bonjour,<br><br>
+                            Nous aurions besoin d'un bouton sur la page "Commandes" pour télécharger la facture au format PDF. 
+                            Le PDF doit contenir notre logo et le récapitulatif de la TVA.<br><br>
+                            Cordialement,<br>Jean Dupont.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Historique des échanges</h3>
+                        
+                        <div class="message">
+                            <span class="message-meta">Jean Dupont (Client) - 27 Janv. 10:00</span>
+                            <p>Avez-vous pu estimer le temps nécessaire ?</p>
+                        </div>
+
+                        <div class="message" style="border-left-color: #22c55e; background: #f0fdf4;">
+                            <span class="message-meta">Admin (Support) - 27 Janv. 14:30</span>
+                            <p>Oui, nous estimons cela à 4h de développement. Comme votre forfait est épuisé, ce ticket passe en "Facturable". Merci de valider ci-contre.</p>
+                        </div>
+
+                        <textarea style="width:100%; padding:1rem; border:1px solid #ccc; border-radius:4px; margin-top:1rem;" rows="3" placeholder="Écrire un message..."></textarea>
+                        <button class="btn btn-sm" style="margin-top:0.5rem;">Envoyer</button>
+                    </div>
+                </section>
+
+                <aside class="col-sidebar">
+                    
+                    <div class="card" style="border-top: 4px solid orange;">
+                        <h3 style="color:orange;">⚠️ Action requise</h3>
+                        <p style="font-size:0.9rem; margin-bottom:1rem;">Ce ticket est hors forfait. Veuillez valider le devis de 4h.</p>
+                        <button class="btn" style="background:#22c55e; margin-bottom:0.5rem;">✅ Accepter le devis</button>
+                        <button class="btn" style="background:#ef4444;">Refuser</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Informations</h3>
+                        <ul class="info-list">
+                            <li><strong>Statut</strong> <span class="badge badge-yellow">En attente</span></li>
+                            <li><strong>Priorité</strong> <span>Haute 🔴</span></li>
+                            <li><strong>Client</strong> <span>Acme Corp</span></li>
+                            <li><strong>Projet</strong> <span>Site Vitrine</span></li>
+                            <li><strong>Créé le</strong> <span>26 Janv. 2026</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Suivi du temps</h3>
+                        <ul class="info-list">
+                            <li><strong>Estimé</strong> <span>4h 00</span></li>
+                            <li><strong>Réel passé</strong> <span>0h 00</span></li>
+                            <li><strong>Reste à faire</strong> <span>4h 00</span></li>
+                        </ul>
+                        <div style="background:#e2e8f0; height:8px; border-radius:4px; margin-top:1rem; overflow:hidden;">
+                            <div style="width: 0%; background:var(--primary-color); height:100%;"></div>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

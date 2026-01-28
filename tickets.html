@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Tickets - Ticketing App</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <nav class="sidebar">
+            <h2>Ticketing App</h2>
+            <ul>
+                <li><a href="dashboard.html">📊 Tableau de bord</a></li>
+                <li><a href="projects.html">📁 Projets</a></li>
+                <li><a href="tickets.html" class="active">🎫 Tickets</a></li>
+                <li><a href="index.html" style="margin-top: auto; background:#ef4444;">Déconnexion</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            
+            <header class="d-flex justify-center" style="justify-content: space-between; margin-bottom: 2rem;">
+                <div>
+                    <h1>Liste des Tickets</h1>
+                    <p>Gérez les demandes et suivez l'avancement.</p>
+                </div>
+                <div>
+                    <a href="ticket-create.html" class="btn btn-sm">➕ Nouveau Ticket</a>
+                </div>
+            </header>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sujet</th>
+                            <th>Client / Projet</th>
+                            <th>Statut</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1042</td>
+                            <td><strong>Bug affichage menu mobile</strong><br><small>Le menu ne s'ouvre pas sur iPhone...</small></td>
+                            <td>Acme Corp<br><small>Site Vitrine</small></td>
+                            <td><span class="badge badge-yellow">En cours</span></td>
+                            <td><span class="badge badge-gray">Inclus</span></td>
+                            <td><a href="ticket-detail.html" class="btn btn-sm" style="background:#cbd5e1; color:#333;">Voir</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>#1041</td>
+                            <td><strong>Mise à jour texte RGPD</strong><br><small>Changement des mentions légales</small></td>
+                            <td>Globex<br><small>Intranet RH</small></td>
+                            <td><span class="badge badge-green">Terminé</span></td>
+                            <td><span class="badge badge-gray">Inclus</span></td>
+                            <td><a href="ticket-detail.html" class="btn btn-sm" style="background:#cbd5e1; color:#333;">Voir</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>#1039</td>
+                            <td><strong>Ajout module export PDF</strong><br><small>Nouvelle fonctionnalité demandée par...</small></td>
+                            <td>Acme Corp<br><small>Site Vitrine</small></td>
+                            <td><span class="badge badge-blue">Nouveau</span></td>
+                            <td><span class="badge badge-red">Facturable</span></td>
+                            <td><a href="ticket-detail.html" class="btn btn-sm" style="background:#cbd5e1; color:#333;">Voir</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
