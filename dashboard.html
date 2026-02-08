@@ -7,43 +7,53 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
 <button id="mobile-menu-btn" class="menu-btn">
-    <span>&#8942;</span> </button>
-    <div class="app-layout">
-        
-        <nav class="sidebar">
-            <h2>Ticketing App</h2>
-            <ul>
-                <li><a href="dashboard.html" class="active">📊 Tableau de bord</a></li>
-                <li><a href="projects.html">📁 Projets</a></li>
-                <li><a href="tickets.html">🎫 Tickets</a></li>
-                <li><a href="index.html" class="btn-logout">🚪 Déconnexion</a></li>
-            </ul>
-        </nav>
+    <span>&#8942;</span>
+</button>
 
-        <main class="main-content">
-            <header style="margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
-                <h1>Bonjour, Admin 👋</h1>
-                <p>Voici un aperçu de l'activité.</p>
-            </header>
+<div class="app-layout">
+    
+    <nav class="sidebar">
+        <h2>Ticketing App</h2>
+        <ul>
+            <li><a href="dashboard.html" class="active">📊 Tableau de bord</a></li>
+            <li><a href="projects.html">📁 Projets</a></li>
+            <li><a href="tickets.html">🎫 Tickets</a></li>
+            
+            <li><a href="profile.html">👤 Mon Profil</a></li>
+            <li><a href="settings.html">⚙️ Paramètres</a></li>
 
-            <section class="d-flex gap-1">
-                <div style="background:white; padding:1.5rem; flex:1; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
-                    <h2>Tickets en cours</h2>
-                    <p style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">12</p>
-                </div>
-                <div style="background:white; padding:1.5rem; flex:1; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
-                    <h2>Tickets à valider</h2>
-                    <p style="font-size: 2rem; font-weight: bold; color: orange;">3</p>
-                </div>
-                <div style="background:white; padding:1.5rem; flex:1; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
-                    <h2>Projets actifs</h2>
-                    <p style="font-size: 2rem; font-weight: bold; color: green;">5</p>
-                </div>
-            </section>
+            <li><a href="index.html" class="btn-logout">🚪 Déconnexion</a></li>
+        </ul>
+    </nav>
 
-        </main>
-    </div>
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Bonjour, <a href="profile.html" style="text-decoration: underline; text-decoration-color: #ccc;">Admin</a> 👋</h1>
+            <p>Voici un aperçu de l'activité.</p>
+        </header>
+
+        <section class="d-flex gap-1">
+            <div class="stat-card">
+                <h2>Tickets en cours</h2>
+                <p class="stat-value text-primary">12</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>Tickets à valider</h2>
+                <p class="stat-value text-warning">3</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>Projets actifs</h2>
+                <p class="stat-value text-success">5</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
 <script src="assets/js/script.js"></script>
 </body>
 </html>

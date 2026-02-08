@@ -1,9 +1,17 @@
-/* --- RESET & VARIABLES --- */
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
 :root {
-    --primary-color: #2563eb; /* Bleu pro */
+    --primary-color: #2563eb;
     --text-dark: #1e293b;
+    --text-muted: #64748b;
     --bg-light: #f1f5f9;
     --sidebar-width: 250px;
+    
+    /* Couleurs sémantiques */
+    --success: #22c55e;
+    --warning: orange;
+    --danger: #ef4444;
 }
 
 * {
@@ -16,64 +24,51 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-light);
     color: var(--text-dark);
-    height: 100vh; /* Prend toute la hauteur de l'écran */
-    overflow-x: hidden; /* Interdit le scroll horizontal sur toute la page */
+    height: 100vh;
+    overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; transition: color 0.2s; }
 ul { list-style: none; }
 
-/* --- UTILITAIRES FLEXBOX --- */
+/* =========================================
+   2. UTILITAIRES (Helpers)
+   ========================================= */
+/* Flexbox */
 .d-flex { display: flex; }
 .flex-col { flex-direction: column; }
 .align-center { align-items: center; }
 .justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
 .gap-1 { gap: 1rem; }
 
-/* --- PAGE DE CONNEXION --- */
-.login-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* Espacement & Taille */
+.w-100 { width: 100%; }
+.d-block { display: block; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.text-right { text-align: right; }
 
-.login-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
-}
+/* Couleurs Texte */
+.text-primary { color: var(--primary-color); }
+.text-warning { color: var(--warning); }
+.text-success { color: var(--success); }
+.text-muted { color: var(--text-muted); }
 
-.form-group { margin-bottom: 1rem; }
-.form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
-.form-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: inherit; /* Pour garder la même police dans le textarea */
-    font-size: 0.95rem;
-}
+/* Couleurs Fond */
+.bg-green { background-color: var(--success); }
+.bg-orange { background-color: var(--warning); }
+.bg-red { background-color: var(--danger); }
 
-/* Petit effet quand on clique dans le champ */
-.form-group input:focus, 
-.form-group select:focus, 
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
+/* =========================================
+   3. COMPOSANTS (Boutons, Badges, Cards...)
+   ========================================= */
 
-/* Style pour les petits textes d'aide sous les champs */
-.form-text {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-top: 0.25rem;
-}
-
+/* --- BOUTONS --- */
 .btn {
     display: inline-block;
     background: var(--primary-color);
@@ -83,125 +78,23 @@ ul { list-style: none; }
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    width: 100%;
+    transition: background 0.2s;
+}
+.btn:hover { opacity: 0.9; }
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    width: auto;
 }
 
-/* --- LAYOUT PRINCIPAL (Dashboard & autres) --- */
-.app-layout {
-    display: flex;
-    height: 100vh;
-}
+.btn-wide { width: auto; padding: 0.8rem 2rem; font-size: 1rem; }
+.btn-outline { background: white; color: #333; border: 1px solid #ccc; }
+.btn-light { background: #cbd5e1; color: #333; }
+.btn-light:hover { background: #94a3b8; color: white; }
+.btn-create { white-space: nowrap; }
 
-/* Barre latérale (Sidebar) */
-.sidebar {
-    width: var(--sidebar-width);
-    background-color: #0f172a;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-}
-
-.sidebar h2 { margin-bottom: 2rem; text-align: center; }
-
-/* --- NAVIGATION / SIDEBAR --- */
-
-/* On cible la liste à l'intérieur de la sidebar */
-.sidebar ul {
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-}
-
-/* On cible les liens (a) directement dans la sidebar */
-.sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    
-    /* Style "Boite" */
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    color: #cbd5e1;
-    
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-/* Effet au survol */
-.sidebar a:hover {
-    background-color: #334155;
-    border-color: #475569;
-    color: white;
-    transform: translateX(5px);
-}
-
-/* Le bouton actif */
-.sidebar a.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Bouton Déconnexion spécifique */
-.btn-logout {
-    margin-top: auto; /* Pousse le bouton tout en bas */
-    background-color: rgba(239, 68, 68, 0.1) !important;
-    color: #fca5a5 !important;
-    border: 1px solid rgba(239, 68, 68, 0.3) !important;
-}
-
-.btn-logout:hover {
-    background-color: #ef4444 !important;
-    color: white !important;
-}
-
-/* Contenu Principal */
-.main-content {
-    flex: 1; /* Prend tout l'espace restant */
-    padding: 2rem;
-    overflow-y: auto; /* Permet de scroller si le contenu est long */
-}
-
-/* --- TABLEAUX DE DONNÉES --- */
-.table-container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    
-    /* MODIFICATION POUR LE MOBILE */
-    overflow-x: auto; /* Ajoute un scroll horizontal si ça dépasse */
-    -webkit-overflow-scrolling: touch; /* Rend le scroll fluide sur iPhone/Android */
-}
-
-/* On force le tableau à garder une taille correcte pour qu'il soit lisible */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    min-width: 600px; /* Largeur minimale pour éviter que ça soit trop serré */
-}
-
-thead {
-    background-color: #f8fafc;
-    border-bottom: 2px solid #e2e8f0;
-}
-
-th, td {
-    padding: 1rem;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Effet au survol d'une ligne */
-tbody tr:hover {
-    background-color: #f1f5f9;
-}
-
-/* --- BADGES (Étiquettes de statut) --- */
+/* --- BADGES --- */
 .badge {
     padding: 0.25rem 0.5rem;
     border-radius: 99px;
@@ -209,36 +102,13 @@ tbody tr:hover {
     font-weight: bold;
     display: inline-block;
 }
+.badge-blue { background-color: #dbeafe; color: #1e40af; }
+.badge-yellow { background-color: #fef9c3; color: #854d0e; }
+.badge-green { background-color: #dcfce7; color: #166534; }
+.badge-red { background-color: #fee2e2; color: #991b1b; }
+.badge-gray { background-color: #f3f4f6; color: #4b5563; }
 
-.badge-blue { background-color: #dbeafe; color: #1e40af; } /* Nouveau */
-.badge-yellow { background-color: #fef9c3; color: #854d0e; } /* En cours */
-.badge-green { background-color: #dcfce7; color: #166534; } /* Terminé */
-.badge-red { background-color: #fee2e2; color: #991b1b; } /* Facturable */
-.badge-gray { background-color: #f3f4f6; color: #4b5563; } /* Inclus */
-
-/* --- BOUTONS D'ACTION --- */
-.btn-sm {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    width: auto;
-    text-decoration: none;
-}
-
-/* --- LAYOUT DÉTAIL (Colonnes) --- */
-.grid-2-1 {
-    display: flex;
-    gap: 2rem; /* Espace entre les colonnes */
-}
-
-/* Sur mobile, on passe en colonnes empilées */
-@media (max-width: 768px) {
-    .grid-2-1 { flex-direction: column; }
-}
-
-.col-main { flex: 2; } /* Prend 2/3 de l'espace */
-.col-sidebar { flex: 1; } /* Prend 1/3 de l'espace */
-
-/* --- CARTES GÉNÉRIQUES --- */
+/* --- CARDS --- */
 .card {
     background: white;
     padding: 1.5rem;
@@ -246,183 +116,296 @@ tbody tr:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     margin-bottom: 1.5rem;
 }
-
-.card h2 {
+.card h2, .card-title-simple {
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #f1f5f9;
     font-size: 1.1rem;
     color: var(--text-dark);
 }
-
-/* --- LISTE D'INFOS (Clé: Valeur) --- */
-.info-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f8fafc;
-}
-.info-list strong { color: #64748b; font-weight: normal; }
-
-/* --- CONVERSATION / COMMENTAIRES --- */
-.message {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: #f8fafc;
+.card-alert-orange { border-top: 4px solid orange; }
+.card-alert-orange h2 { color: orange; border: none; }
+.card-no-padding { padding: 0; overflow: hidden; }
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    flex: 1;
     border-radius: 8px;
-    border-left: 4px solid var(--primary-color);
-}
-.message-meta {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-bottom: 0.5rem;
-    display: block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* --- GRILLE DE STATISTIQUES (3 colonnes) --- */
+/* --- FORMULAIRES --- */
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+.form-group input, 
+.form-group select, 
+.form-group textarea,
+.comment-area textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+.comment-area textarea { resize: vertical; }
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.form-text { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+.form-section-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+/* Checkbox style "Bouton" */
+.checkbox-pill {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: #f8fafc; padding: 0.5rem 1rem;
+    border-radius: 4px; border: 1px solid #e2e8f0;
+    cursor: pointer; transition: all 0.2s ease;
+    user-select: none;
+}
+.checkbox-pill:hover { background: #f1f5f9; border-color: #cbd5e1; }
+
+/* --- BARRES DE PROGRESSION --- */
+.progress-container {
+    background: #e2e8f0;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+.progress-container.sm { height: 6px; }
+.progress-bar { background: var(--primary-color); height: 100%; border-radius: 4px; }
+.progress-info { font-size: 0.85rem; margin-bottom: 0.2rem; }
+
+/* --- AVATARS --- */
+.avatar-group { display: flex; gap: 0.5rem; }
+.avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 0.9rem;
+}
+.avatar-blue { background: #bfdbfe; color: #1e40af; }
+.avatar-green { background: #bbf7d0; color: #166534; }
+.avatar-add {
+    border: 2px dashed #ccc; color: #999;
+    cursor: pointer; background: transparent;
+}
+.avatar-add:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+/* --- TABLES --- */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+table { width: 100%; border-collapse: collapse; text-align: left; min-width: 600px; }
+thead { background-color: #f8fafc; border-bottom: 2px solid #e2e8f0; }
+th, td { padding: 1rem; border-bottom: 1px solid #e2e8f0; }
+tbody tr:hover { background-color: #f1f5f9; }
+.td-progress { width: 250px; }
+
+/* =========================================
+   4. LAYOUT PRINCIPAL
+   ========================================= */
+.app-layout { display: flex; height: 100vh; }
+.main-content { flex: 1; padding: 2rem; overflow-y: auto; }
+.container-narrow { max-width: 800px; margin: 0 auto; }
+.divider { border: 0; border-top: 1px solid #f1f5f9; margin: 2rem 0; }
+
+/* Headers */
+.page-header, .page-header-simple { margin-bottom: 2rem; }
+.page-header { border-bottom: 1px solid #ccc; padding-bottom: 1rem; }
+.header-flex {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+}
+.header-actions { display: flex; gap: 0.5rem; }
+.link-back {
+    color: var(--text-muted); font-size: 0.9rem;
+    display: inline-block; margin-bottom: 0.5rem;
+}
+.link-back:hover { color: var(--primary-color); text-decoration: underline; }
+
+/* Grilles */
+.grid-2-1 { display: flex; gap: 2rem; }
+.col-main { flex: 2; }
+.col-sidebar { flex: 1; }
+
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
-/* Style pour les gros chiffres */
+/* =========================================
+   5. SIDEBAR
+   ========================================= */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: #0f172a;
+    color: white;
+    display: flex; flex-direction: column;
+    padding: 1rem;
+}
+.sidebar h2 { margin-bottom: 2rem; text-align: center; }
+.sidebar ul { display: flex; flex-direction: column; height: 100%; }
+
+.sidebar a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 15px; margin-bottom: 10px;
+    background-color: #1e293b; border: 1px solid #334155;
+    color: #cbd5e1; border-radius: 8px; font-weight: 500;
+    transition: all 0.2s ease;
+}
+.sidebar a:hover {
+    background-color: #334155; border-color: #475569;
+    color: white; transform: translateX(5px);
+}
+.sidebar a.active {
+    background-color: var(--primary-color); border-color: var(--primary-color);
+    color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout {
+    margin-top: auto;
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    color: #fca5a5 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+.btn-logout:hover {
+    background-color: #ef4444 !important; color: white !important;
+}
+
+/* =========================================
+   6. MODULES SPÉCIFIQUES
+   ========================================= */
+
+/* Login */
+.login-container { height: 100vh; display: flex; justify-content: center; align-items: center; }
+.login-card {
+    background: white; padding: 2rem; border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%; max-width: 400px;
+}
+
+/* Stats Dashboard */
 .stat-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--text-dark);
-    margin: 0.5rem 0;
+    font-size: 2rem; font-weight: bold;
+    color: var(--text-dark); margin: 0.5rem 0;
 }
-.stat-label {
-    color: #64748b;
-    font-size: 0.9rem;
-}
+.stat-sub { font-size: 1rem; color: var(--text-muted); font-weight: normal; }
+.stat-label { color: var(--text-muted); font-size: 0.9rem; }
 
-/* --- RESPONSIVE MOBILE (Max 768px) --- */
+/* Listes d'infos (Clé/Valeur) */
+.info-list li {
+    display: flex; justify-content: space-between;
+    padding: 0.5rem 0; border-bottom: 1px solid #f8fafc;
+}
+.info-list strong { color: var(--text-muted); font-weight: normal; }
+
+/* Messages / Tickets */
+.message {
+    margin-bottom: 1rem; padding: 1rem;
+    background: #f8fafc; border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+.message-support { border-left-color: #22c55e; background: #f0fdf4; }
+.message-meta {
+    font-size: 0.85rem; color: var(--text-muted);
+    margin-bottom: 0.5rem; display: block;
+}
+.ticket-description { line-height: 1.6; color: var(--text-dark); }
+.ticket-description p { margin-bottom: 1rem; }
+
+/* =========================================
+   7. RESPONSIVE (MOBILE < 768px)
+   ========================================= */
+.menu-btn { display: none; } /* Caché par défaut sur PC */
+
 @media (max-width: 768px) {
-
-    /* 1. On cache le bouton menu par défaut sur PC, mais on l'affiche ici */
+    /* --- NAVIGATION --- */
     .menu-btn {
-        display: block; /* Devient visible */
-        position: fixed;
-        top: 15px;
-        right: 15px; /* Je le mets à droite, souvent plus accessible au pouce */
-        z-index: 2000; /* Au-dessus de tout */
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%; /* Bouton rond */
-        font-size: 1.5rem;
-        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        position: fixed; top: 15px; right: 15px; z-index: 2000;
+        background: var(--primary-color); color: white; border: none;
+        width: 45px; height: 45px; border-radius: 50%;
+        font-size: 1.5rem; cursor: pointer;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
-    /* 2. On change la Sidebar pour qu'elle flotte */
     .sidebar {
-        position: fixed;    /* Elle ne pousse plus le contenu, elle flotte par dessus */
-        top: 0;
-        left: 0;
-        height: 100vh;      /* Toute la hauteur */
-        width: 250px;
-        z-index: 1000;      /* Au dessus du contenu */
-        
-        /* L'ASTUCE : On la déplace à gauche de 100% pour la cacher */
-        transform: translateX(-100%); 
-        transition: transform 0.3s ease-in-out; /* Animation fluide */
+        position: fixed; top: 0; left: 0;
+        height: 100vh; width: 250px; z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
     }
+    .sidebar.open { transform: translateX(0); box-shadow: 4px 0 15px rgba(0,0,0,0.5); }
 
-    /* 3. La classe qu'on ajoutera en JS pour montrer le menu */
-    .sidebar.open {
-        transform: translateX(0); /* On la remet à sa place (visible) */
-        box-shadow: 4px 0 15px rgba(0,0,0,0.5); /* Une ombre pour détacher du fond */
-    }
-
-    /* 4. Le contenu principal prend toute la largeur */
-    .main-content {
-        width: 100%;
-        flex: none; /* Annule le flex: 1 */
-        padding-top: 4rem; /* Laisse de la place pour pas que le titre soit sous le bouton */
-    }
+    /* --- LAYOUT GLOBAL --- */
+    .main-content { width: 100%; flex: none; padding-top: 4rem; }
     
-    /* On passe les grilles en une seule colonne */
-    .grid-2-1, .stats-grid, .d-flex.gap-1 {
+    /* Toutes les grilles passent en colonne unique */
+    .grid-2-1, .stats-grid, .d-flex.gap-1, .header-flex, .mobile-col {
         flex-direction: column;
         grid-template-columns: 1fr;
     }
-
-/* --- TRANSFORMATION TABLEAU EN CARTES (MOBILE) --- */
     
-    /* 1. On annule le comportement de tableau et on TUE la largeur forcée */
+    /* Alignements spécifiques */
+    .d-flex.gap-1 { gap: 1rem; }
+    .header-flex { align-items: flex-start; }
+    .header-actions { width: 100%; justify-content: space-between; }
+    .header-actions .btn { flex: 1; }
+
+    /* --- COMPOSANTS FLUIDES --- */
+    .btn-wide, .checkbox-pill { width: 100%; }
+
+    /* --- TABLEAUX RESPONSIVES (Mode Cartes) --- */
+    .table-container { box-shadow: none; background: transparent; overflow: visible; }
+    
     table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-        min-width: 0 !important; /* <--- C'EST CA QUI REGLE TON PROBLEME */
+        display: block; width: 100%; min-width: 0 !important;
     }
-
-    /* 2. On cache l'en-tête */
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    /* 3. Style de la Carte */
+    
+    thead tr { position: absolute; top: -9999px; left: -9999px; }
+    
     tr {
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        padding: 1rem;
+        background: white; border: 1px solid #e2e8f0;
+        border-radius: 8px; margin-bottom: 1rem; padding: 1rem;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-
-    /* 4. Style des lignes */
+    
     td {
-        border: none;
-        border-bottom: 1px solid #f1f5f9;
-        position: relative;
-        padding-left: 0 !important;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: right;
-        
-        /* Sécurité pour que le texte ne dépasse jamais */
-        word-break: break-word; 
+        border: none; border-bottom: 1px solid #f1f5f9;
+        position: relative; padding-left: 0 !important;
+        padding-top: 0.5rem; padding-bottom: 0.5rem;
+        display: flex; justify-content: space-between; align-items: center;
+        text-align: right; word-break: break-word;
     }
-
     td:last-child { border-bottom: 0; }
-
-    /* 5. Le Label ajouté par le JS */
+    
     td::before {
         content: attr(data-label);
-        font-weight: bold;
-        color: #64748b;
-        text-align: left;
-        padding-right: 1rem;
-        white-space: nowrap; /* Le titre reste sur une ligne */
-        flex-shrink: 0; /* Le titre ne s'écrase pas */
+        font-weight: bold; color: var(--text-muted);
+        text-align: left; padding-right: 1rem;
+        white-space: nowrap; flex-shrink: 0;
     }
     
-    /* Correction du conteneur qui ne doit plus scroller */
-    .table-container {
-        box-shadow: none;
-        background: transparent;
-        overflow: visible; /* Plus de scroll */
-    }
-}
-
-/* --- VERSION PC (Ecran > 769px) --- */
-@media (min-width: 769px) {
-    .menu-btn {
-        display: none; /* On cache le bouton sur PC */
-    }
+    /* Reset de la largeur barre progression sur mobile */
+    .td-progress { width: 100%; display: block; }
 }

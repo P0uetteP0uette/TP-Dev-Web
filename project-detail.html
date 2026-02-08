@@ -7,114 +7,126 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
 <button id="mobile-menu-btn" class="menu-btn">
-    <span>&#8942;</span> </button>
-    <div class="app-layout">
+    <span>&#8942;</span>
+</button>
+
+<div class="app-layout">
+    
+    <nav class="sidebar">
+        <h2>Ticketing App</h2>
+        <ul>
+            <li><a href="dashboard.html">📊 Tableau de bord</a></li>
+            <li><a href="projects.html" class="active">📁 Projets</a></li>
+            <li><a href="tickets.html">🎫 Tickets</a></li>
+            <li><a href="index.html" class="btn-logout">🚪 Déconnexion</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
         
-        <nav class="sidebar">
-            <h2>Ticketing App</h2>
-            <ul>
-                <li><a href="dashboard.html">📊 Tableau de bord</a></li>
-                <li><a href="projects.html" class="active">📁 Projets</a></li>
-                <li><a href="tickets.html">🎫 Tickets</a></li>
-                <li><a href="index.html" class="btn-logout">🚪 Déconnexion</a></li>
-            </ul>
-        </nav>
-
-        <main class="main-content">
+        <div class="page-header-simple">
+            <a href="projects.html" class="link-back">← Retour aux projets</a>
             
-            <div style="margin-bottom: 2rem;">
-                <a href="projects.html" style="color: #64748b; font-size: 0.9rem;">← Retour aux projets</a>
-                <div class="d-flex align-center justify-center" style="justify-content: space-between; margin-top: 0.5rem;">
-                    <div>
-                        <h1>Site Vitrine 2026</h1>
-                        <p style="color:#64748b;">Client : <strong>Acme Corp</strong> • Contrat #CTR-2026-04</p>
-                    </div>
-                    <div>
-                        <button class="btn btn-sm" style="background: white; color: #333; border: 1px solid #ccc;">⚙️ Configurer</button>
-                        <a href="ticket-create.html" class="btn btn-sm">➕ Nouveau Ticket</a>
-                    </div>
+            <div class="header-flex mt-1">
+                <div>
+                    <h1>Site Vitrine 2026</h1>
+                    <p class="text-muted">Client : <strong>Acme Corp</strong> • Contrat #CTR-2026-04</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-sm btn-outline">⚙️ Configurer</button>
+                    <a href="ticket-create.html" class="btn btn-sm">➕ Nouveau Ticket</a>
                 </div>
             </div>
+        </div>
 
-            <div class="stats-grid">
+        <div class="stats-grid">
+            
+            <div class="card">
+                <h2 class="card-title-simple">Consommation Heures</h2>
                 
-                <div class="card">
-                    <h2 style="font-size:1rem; border:none;">Consommation Heures</h2>
-                    <div class="stat-value">12h <span style="font-size:1rem; color:#64748b; font-weight:normal;">/ 50h</span></div>
-                    
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden; margin-bottom:0.5rem;">
-                        <div style="width: 24%; background:var(--primary-color); height:100%;"></div>
-                    </div>
-                    <p class="stat-label">Il reste <strong>38h</strong> dans le forfait.</p>
+                <div class="stat-value">
+                    12h <span class="stat-sub">/ 50h</span>
                 </div>
-
-                <div class="card">
-                    <h2 style="font-size:1rem; border:none;">Hors Forfait (Facturable)</h2>
-                    <div class="stat-value" style="color: orange;">4h</div>
-                    <p class="stat-label">Tickets validés en supplément.</p>
-                    <small style="color:#64748b;">Taux horaire : 80€ / h</small>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 24%;"></div>
                 </div>
-
-                <div class="card">
-                    <h2 style="font-size:1rem; border:none;">Collaborateurs</h2>
-                    <div class="d-flex gap-1" style="margin-top: 1rem;">
-                        <div style="width:40px; height:40px; background:#bfdbfe; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#1e40af; font-weight:bold;">AL</div>
-                        <div style="width:40px; height:40px; background:#bbf7d0; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#166534; font-weight:bold;">JP</div>
-                        <div style="width:40px; height:40px; border:2px dashed #ccc; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#999; cursor:pointer;">+</div>
-                    </div>
-                    <p class="stat-label" style="margin-top:0.5rem;">Alice L. et Jean P.</p>
-                </div>
-
+                
+                <p class="stat-label">Il reste <strong>38h</strong> dans le forfait.</p>
             </div>
 
-            <div class="card" style="padding: 0; overflow: hidden;">
-                <div style="padding: 1.5rem; border-bottom: 1px solid #f1f5f9;">
-                    <h2>Derniers tickets du projet</h2>
+            <div class="card">
+                <h2 class="card-title-simple">Hors Forfait (Facturable)</h2>
+                <div class="stat-value text-warning">4h</div>
+                <p class="stat-label">Tickets validés en supplément.</p>
+                <small class="text-muted">Taux horaire : 80€ / h</small>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title-simple">Collaborateurs</h2>
+                
+                <div class="avatar-group mt-1">
+                    <div class="avatar avatar-blue">AL</div>
+                    <div class="avatar avatar-green">JP</div>
+                    <div class="avatar avatar-add">+</div>
                 </div>
                 
-                <table style="width:100%;">
-                    <thead style="background: #f8fafc;">
+                <p class="stat-label mt-1">Alice L. et Jean P.</p>
+            </div>
+
+        </div>
+
+        <div class="card card-no-padding">
+            <div class="card-header-border">
+                <h2>Derniers tickets du projet</h2>
+            </div>
+            
+            <div class="table-container">
+                <table class="w-100">
+                    <thead>
                         <tr>
-                            <th style="padding:1rem;">ID</th>
-                            <th style="padding:1rem;">Sujet</th>
-                            <th style="padding:1rem;">Statut</th>
-                            <th style="padding:1rem;">Type</th>
-                            <th style="padding:1rem;">Temps</th>
-                            <th style="padding:1rem;">Actions</th>
+                            <th>ID</th>
+                            <th>Sujet</th>
+                            <th>Statut</th>
+                            <th>Type</th>
+                            <th>Temps</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="padding:1rem;">#1042</td>
-                            <td style="padding:1rem;"><strong>Bug affichage menu</strong></td>
-                            <td style="padding:1rem;"><span class="badge badge-yellow">En cours</span></td>
-                            <td style="padding:1rem;"><span class="badge badge-gray">Inclus</span></td>
-                            <td style="padding:1rem;">2h 30</td>
-                            <td style="padding:1rem;"><a href="ticket-detail.html" class="btn btn-sm" style="background:#cbd5e1; color:#333;">Voir</a></td>
+                            <td data-label="ID">#1042</td>
+                            <td data-label="Sujet"><strong>Bug affichage menu</strong></td>
+                            <td data-label="Statut"><span class="badge badge-yellow">En cours</span></td>
+                            <td data-label="Type"><span class="badge badge-gray">Inclus</span></td>
+                            <td data-label="Temps">2h 30</td>
+                            <td data-label="Actions"><a href="ticket-detail.html" class="btn btn-sm btn-light">Voir</a></td>
                         </tr>
                         <tr>
-                            <td style="padding:1rem;">#1039</td>
-                            <td style="padding:1rem;"><strong>Module Export PDF</strong></td>
-                            <td style="padding:1rem;"><span class="badge badge-blue">Nouveau</span></td>
-                            <td style="padding:1rem;"><span class="badge badge-red">Facturable</span></td>
-                            <td style="padding:1rem;">--</td>
-                            <td style="padding:1rem;"><a href="ticket-detail.html" class="btn btn-sm" style="background:#cbd5e1; color:#333;">Voir</a></td>
+                            <td data-label="ID">#1039</td>
+                            <td data-label="Sujet"><strong>Module Export PDF</strong></td>
+                            <td data-label="Statut"><span class="badge badge-blue">Nouveau</span></td>
+                            <td data-label="Type"><span class="badge badge-red">Facturable</span></td>
+                            <td data-label="Temps">--</td>
+                            <td data-label="Actions"><a href="ticket-detail.html" class="btn btn-sm btn-light">Voir</a></td>
                         </tr>
                         <tr>
-                            <td style="padding:1rem;">#1010</td>
-                            <td style="padding:1rem;"><strong>Installation SSL</strong></td>
-                            <td style="padding:1rem;"><span class="badge badge-green">Terminé</span></td>
-                            <td style="padding:1rem;"><span class="badge badge-gray">Inclus</span></td>
-                            <td style="padding:1rem;">1h 00</td>
-                            <td style="padding:1rem;"><a href="ticket-detail.html" class="btn btn-sm" style="background:#cbd5e1; color:#333;">Voir</a></td>
+                            <td data-label="ID">#1010</td>
+                            <td data-label="Sujet"><strong>Installation SSL</strong></td>
+                            <td data-label="Statut"><span class="badge badge-green">Terminé</span></td>
+                            <td data-label="Type"><span class="badge badge-gray">Inclus</span></td>
+                            <td data-label="Temps">1h 00</td>
+                            <td data-label="Actions"><a href="ticket-detail.html" class="btn btn-sm btn-light">Voir</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
 
-        </main>
-    </div>
+    </main>
+</div>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
