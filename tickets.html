@@ -20,10 +20,8 @@
             <li><a href="dashboard.html">📊 Tableau de bord</a></li>
             <li><a href="projects.html">📁 Projets</a></li>
             <li><a href="tickets.html" class="active">🎫 Tickets</a></li>
-            
             <li><a href="profile.html">👤 Mon Profil</a></li>
             <li><a href="settings.html">⚙️ Paramètres</a></li>
-
             <li><a href="index.html" class="btn-logout">🚪 Déconnexion</a></li>
         </ul>
     </nav>
@@ -38,6 +36,12 @@
             <a href="ticket-create.html" class="btn btn-sm btn-create">➕ Nouveau Ticket</a>
         </header>
 
+        <div class="d-flex gap-1 mb-1" style="flex-wrap: wrap;">
+            <button class="btn btn-sm filter-btn active" data-filter="all" style="background:#64748b;">Tout voir</button>
+            <button class="btn btn-sm filter-btn" data-filter="facturable" style="background:#ef4444;">Facturable</button>
+            <button class="btn btn-sm filter-btn" data-filter="inclus" style="background:#64748b;">Inclus</button>
+        </div>
+
         <div class="table-container">
             <table class="w-100">
                 <thead>
@@ -50,8 +54,8 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody id="ticketList">
+                    <tr data-type="inclus">
                         <td data-label="ID">#1042</td>
                         <td data-label="Sujet">
                             <strong>Bug affichage menu mobile</strong>
@@ -68,7 +72,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr data-type="inclus">
                         <td data-label="ID">#1041</td>
                         <td data-label="Sujet">
                             <strong>Mise à jour texte RGPD</strong>
@@ -85,7 +89,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr data-type="facturable">
                         <td data-label="ID">#1039</td>
                         <td data-label="Sujet">
                             <strong>Ajout module export PDF</strong>
