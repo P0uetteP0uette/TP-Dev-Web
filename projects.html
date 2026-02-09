@@ -38,6 +38,12 @@
             <a href="project-create.html" class="btn btn-sm btn-create">➕ Nouveau Projet</a>
         </header>
 
+        <div class="d-flex gap-1 mb-1" style="flex-wrap: wrap;">
+            <button class="btn btn-sm project-filter-btn active" data-filter="all" style="background:#64748b;">Tout voir</button>
+            <button class="btn btn-sm project-filter-btn" data-filter="actif" style="background:#22c55e;">Actifs</button>
+            <button class="btn btn-sm project-filter-btn" data-filter="epuise" style="background:#ef4444;">Épuisés</button>
+        </div>
+
         <div class="table-container">
             <table class="w-100">
                 <thead>
@@ -51,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-status="actif">
                         <td data-label="Nom du Projet">
                             <strong>Site Vitrine 2026</strong>
                             <br><small class="text-muted">Refonte complète</small>
@@ -72,7 +78,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr data-status="actif">
                         <td data-label="Nom du Projet">
                             <strong>Intranet RH</strong>
                             <br><small class="text-muted">Maintenance évolutive</small>
@@ -93,7 +99,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr data-status="epuise">
                         <td data-label="Nom du Projet">
                             <strong>Campagne Marketing Q1</strong>
                             <br><small class="text-muted">Landing pages</small>
